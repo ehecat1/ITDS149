@@ -8,10 +8,14 @@ La prueba de concepto consiste en dos servicios, un servidor de aplicaciones web
 
 **Instrucciones**
 1. Levantar servicios
-    `$ docker-compose -f docker-compose.yml up --build`
+    ``` bash
+    $ docker-compose -f docker-compose.yml up --build
+    ```
 2. Obtener direcciones IP de los servicios
-    `$ docker inspect clase01_proxy-server_1`
-    `$ docker inspect clase01_web-server_1`
+    ``` bash
+    $ docker inspect clase01_proxy-server_1
+    $ docker inspect clase01_web-server_1
+    ```
 3. Abrir la URL **http://< ip-web-server >/index.html**
 	Esto debera de desplegarle una pagina con la leyenda "I know who u r"
 4. Revisar los mensajes desplegados en la terminal en la que se ejecuto el comando `$ docker-compose -f docker-compose.yml up --build`
