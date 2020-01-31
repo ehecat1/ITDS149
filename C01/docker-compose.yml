@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web-server:
+    image: nginx
+    volumes: 
+      - ./htdocs:/usr/share/nginx/html
+    ports: 
+      - '80:80'
+  proxy-server:
+    image: minimum2scp/squid 
+    ports: 
+      - '3128:3128'
