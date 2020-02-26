@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  web-server-test:
+    image: nginx
+    volumes: 
+      - ./test:/usr/share/nginx/html
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.28
+  web-server-prod:
+    image: nginx
+    volumes: 
+      - ./prod:/usr/share/nginx/html
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.3
+  proxy-server:
+    image: minimum2scp/squid 
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.6
+  cliente-01:
+    build: 
+      context: ./cliente
+    ports: 
+      - "221:22"
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.2
+  cliente-01:
+    build: 
+      context: ./cliente
+    ports: 
+      - "222:22"
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.12
+  cliente-02:
+    build: 
+      context: ./cliente
+    ports: 
+      - "223:22"
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.23
+  cliente-03:
+    build: 
+      context: ./cliente
+    ports: 
+      - "224:22"
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.34
+  cliente-05:
+    build: 
+      context: ./cliente
+    ports: 
+      - "225:22"
+    networks: 
+      redlan:
+        ipv4_address: 10.5.0.45
+networks:
+  redlan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24
+          
